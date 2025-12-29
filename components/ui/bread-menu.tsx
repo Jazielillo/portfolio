@@ -12,7 +12,11 @@ export default function MobileMenu() {
   const [active, setActive] = useState<string>("");
 
   // Montado en cliente (necesario para portal)
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   // Scroll-lock del body
   useEffect(() => {

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { clsx } from "clsx";
@@ -10,12 +9,6 @@ import { BackgroundGradientTemplate } from "./ui/background-gradient-template";
 import { AnimatedEntry } from "./animations/animated-entry";
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const mainTitleClasses = clsx(
     "font-onest text-[54px] font-black leading-[100%]",

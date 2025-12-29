@@ -44,7 +44,7 @@ function ProjectCard({ project, type }: ProjectCardProps) {
       className="h-full"
     >
       <BackgroundGradient
-        className={`rounded-[22px] bg-white dark:bg-zinc-900 h-full ${type === "professional" ? "min-h-[550px]" : "min-h-[450px]"}`}
+        className={`rounded-[22px] bg-white dark:bg-zinc-900 h-full ${type === "professional" ? "min-h-137.5" : "min-h-112.5"}`}
         animate={false}
       >
         <div className="p-4 sm:p-6 h-full flex flex-col">
@@ -86,8 +86,8 @@ function ProjectCard({ project, type }: ProjectCardProps) {
           <div className="flex-1 mb-4">
             <div className="flex flex-wrap gap-2">
               {getSkillsByNames([
-                ...project.technologies.frontend,
-                ...project.technologies.backend,
+                ...(project.technologies?.frontend || []),
+                ...(project.technologies?.backend || []),
               ])
                 .slice(0, 4)
                 .map((skill) => (
@@ -154,9 +154,9 @@ export function Projects({ filterTechnology }: ProjectsProps) {
     if (!filterTechnology) return professionalProjects;
     return professionalProjects.filter((project) =>
       [
-        ...project.technologies.frontend,
-        ...project.technologies.backend,
-        ...project.technologies.tools,
+        ...(project.technologies?.frontend || []),
+        ...(project.technologies?.backend || []),
+        ...(project.technologies?.tools || []),
       ].some((tech) => tech.toLowerCase() === filterTechnology.toLowerCase())
     );
   }, [filterTechnology, professionalProjects]);
@@ -165,9 +165,9 @@ export function Projects({ filterTechnology }: ProjectsProps) {
     if (!filterTechnology) return academicProjects;
     return academicProjects.filter((project) =>
       [
-        ...project.technologies.frontend,
-        ...project.technologies.backend,
-        ...project.technologies.tools,
+        ...(project.technologies?.frontend || []),
+        ...(project.technologies?.backend || []),
+        ...(project.technologies?.tools || []),
       ].some((tech) => tech.toLowerCase() === filterTechnology.toLowerCase())
     );
   }, [filterTechnology, academicProjects]);

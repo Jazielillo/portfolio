@@ -7,13 +7,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Github,
   ExternalLink,
-  Calendar,
   User,
   Users,
-  CheckCircle2,
   Clock,
-  Briefcase,
-  GraduationCap,
   ArrowLeft,
   X,
   Layers,
@@ -100,7 +96,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               className="relative mx-auto max-w-5xl"
             >
               <div className="group relative overflow-hidden rounded-2xl border bg-muted shadow-2xl transition-all">
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-background/20 to-transparent" />
+                <div className="absolute inset-0 z-10 bg-linear-to-t from-background/20 to-transparent" />
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
@@ -121,8 +117,8 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
           {[
             { label: "Rol", val: project.role, icon: User },
             { label: "Duración", val: project.duration, icon: Clock },
-            { label: "Equipo", val: project.projectSummary.teamSize || "Individual", icon: Users },
-            { label: "Categoría", val: project.projectSummary.projectType, icon: Layers },
+            { label: "Equipo", val: project.projectSummary?.teamSize || "Individual", icon: Users },
+            { label: "Categoría", val: project.projectSummary?.projectType || project.type, icon: Layers },
           ].map((item, i) => (
             <BackgroundGradient key={i} className="rounded-[22px] bg-white dark:bg-zinc-900">
               <div className="flex flex-col items-center p-6 text-center">
@@ -165,6 +161,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
             </div>
 
             {/* Características con Iconos Dinámicos */}
+            {project.features && project.features.length > 0 && (
             <div className="space-y-8">
               <h3 className="text-3xl font-bold tracking-tight">Funcionalidades Clave</h3>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -179,6 +176,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 ))}
               </div>
             </div>
+            )}
 
             {/* Video Demo */}
             {project.demo && (
@@ -240,7 +238,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 <div className="p-8">
                   <h3 className="mb-6 text-xl font-bold">Tecnologías Utilizadas</h3>
                   <div className="space-y-6">
-                    {Object.entries(project.technologies).map(([key, techs]) => {
+                    {project.technologies && Object.entries(project.technologies).map(([key, techs]) => {
                       const skills = getSkillsByNames(techs);
                       return techs.length > 0 && (
                         <div key={key}>
@@ -293,7 +291,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-background/95 p-4 backdrop-blur-md"
             onClick={() => setSelectedImage(null)}
           >
             <Button

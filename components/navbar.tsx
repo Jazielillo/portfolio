@@ -1,9 +1,7 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import NavbarTabs from "./ui/tabs-trigger";
 import { ModeToggle } from "./ui/mode-toggle";
-import { Button } from "./ui/button";
 import MobileMenu from "./ui/bread-menu";
 
 export const Navbar = () => {
