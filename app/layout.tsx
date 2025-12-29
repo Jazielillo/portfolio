@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "John Anderson - Fullstack Developer Portfolio",
+  title: "Enrique Buelna",
   description:
     "Professional portfolio showcasing fullstack development expertise in React, Node.js, Angular, and modern web technologies. View projects, skills, and contact information.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Angular",
     "portfolio",
   ],
-  authors: [{ name: "John Anderson" }],
+  authors: [{ name: "Jesús Enrique Buelna Servín" }],
   generator: "v0.app",
   icons: {
     icon: [
